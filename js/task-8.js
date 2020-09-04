@@ -35,8 +35,8 @@ function createBoxes(amount) {
   const allBoxes = [];
   for (box; box < amount; box += 1) {
     createBox();
+    allBoxes.push(box);
   }
-  allBoxes.push(box);
 }
 
 function destroyBoxes() {

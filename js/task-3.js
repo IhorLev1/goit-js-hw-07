@@ -19,26 +19,18 @@ const images = [
 ];
 const gallery = document.getElementById("gallery");
 
-images.forEach((images) => {
-  gallery.insertAdjacentHTML(
-    "beforeend",
-    `<li><img class=list_Item src="${images.url}"width="300px" height="250px" alt="${images.alt}"></li>`
-  );
-});
+const createImg = (image) => {
+  const listItemRef = document.createElement("li");
+  const imgRef = document.createElement("img");
+  imgRef.setAttribute("src", image.url);
+  imgRef.setAttribute("alt", image.alt);
+  imgRef.setAttribute("width", "300px");
+  imgRef.setAttribute("height", "200px");
+  listItemRef.appendChild(imgRef);
+  return listItemRef;
+};
 
-// const createImg = (image) => {
-//   const listItemRef = document.createElement("li");
-//   const imgRef = document.createElement("img");
-//   imgRef.setAttribute("src");
-//   imgRef.setAttribute("alt");
-//   listItemRef.appendChild(imgRef);
-//   return listItemRef;
-// };
+const imagesList = images.map((image) => createImg(image));
 
-// const imagesList = images.map((image) => createImg(image));
-
-// console.log(imagesList);
-
-// const listRef = document.querySelector("#gallery");
-// listRef.append(...imagesList);
-// console.log(imagesList);
+const listRef = document.querySelector("#gallery");
+listRef.append(...imagesList);
